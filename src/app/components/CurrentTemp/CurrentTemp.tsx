@@ -14,11 +14,11 @@ const SearchBar = ({ city } : Props) => {
             <p>Chance of rain: 0%</p>
 
             <div>
-                <h1>31 <WiCelsius size={25} color='#000' /></h1>
+                <h1>31 <WiCelsius size={50} color='#000' style={{ margin : "-15px"}} /></h1>
             </div>
 
             <div>
-                <h1><WiDaySunny size={200} color='yellow' /></h1>
+                <h1><WiDaySunny size={200} color='#ffbb11b8' style={{float: 'right'}} /></h1>
             </div>
 
        </div>
