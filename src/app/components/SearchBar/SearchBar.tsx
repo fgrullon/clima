@@ -1,20 +1,26 @@
 "use client";
-import { useState } from 'react';
+import { useState, Dispatch, SetStateAction } from 'react';
 
-const SearchBar = () => {
+interface Props {
+    setCity : Dispatch<SetStateAction<string>>
+}
+const SearchBar = ({ setCity } : Props)  => {
     const [searchTerm, setSearchTerm] = useState<string>('');
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>): void => {
         e.preventDefault();
         setSearchTerm(e.target.value);
-    }
+        
+    } 
 
-    if (searchTerm.length > 0) {
-        console.log(searchTerm)
-        //Do some request
+    const Search = () => {
+        if (searchTerm.length > 0) {
+            setCity(searchTerm)
+        }
     }
 
     return (
+        <>
         <input 
             type="text" 
             placeholder="Search for cities" 
@@ -29,6 +35,8 @@ const SearchBar = () => {
                 color: "black"
             }}
         />
+        <button type="button" value="search" onClick={Search}>Search</button>
+        </>
     );
 }
 
