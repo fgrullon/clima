@@ -6,6 +6,10 @@ import WeekForecast from '../app/components/WeekForecast/WeekForecast';
 import Sidebar from '../app/components/Sidebar/Sidebar';
 import weatherService from './service/weatherService';
 import { Weather } from './types';
+import { 
+  Box, 
+  CssBaseline
+} from '@mui/material'
 
 export default function Home() {
   const [city, setCity] = useState<string>('');
@@ -24,11 +28,12 @@ export default function Home() {
 
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Sidebar />
-      <SearchBar setCity={setCity} />
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      {/* <SearchBar setCity={setCity} /> */}
+      <Sidebar setCity={setCity} />
       {weather && <CurrentTemp weather={weather} /> }
-      <WeekForecast />
-    </main>
+      {weather && <WeekForecast /> }
+    </Box>
   )
 }
