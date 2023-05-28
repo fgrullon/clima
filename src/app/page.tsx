@@ -5,10 +5,11 @@ import CurrentTemp from '../app/components/CurrentTemp/CurrentTemp';
 import WeekForecast from '../app/components/WeekForecast/WeekForecast';
 import Sidebar from '../app/components/Sidebar/Sidebar';
 import weatherService from './service/weatherService';
+import { Weather } from './types';
 
 export default function Home() {
   const [city, setCity] = useState<string>('');
-  const [weather, setWeather] = useState();
+  const [weather, setWeather] = useState<Weather>();
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -20,15 +21,13 @@ export default function Home() {
     }
   }, [city]);
 
-  if(weather){
-    console.log(weather)
-  }
+
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Sidebar />
       <SearchBar setCity={setCity} />
-      <CurrentTemp city={city} />
+      {weather && <CurrentTemp weather={weather} /> }
       <WeekForecast />
     </main>
   )

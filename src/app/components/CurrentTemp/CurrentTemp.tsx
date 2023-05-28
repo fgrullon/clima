@@ -1,16 +1,21 @@
 "use client";
 import { WiCelsius, WiDaySunny } from 'weather-icons-react';
+import { Weather } from '../../types';
 
 interface Props {
-    city : String;
+    weather : Weather;
 }
 
-const CurrentTemp = ({ city } : Props) => {
+const CurrentTemp = ( { weather } : Props ) => {
+
+    if(!weather){
+        return null;
+    }
 
     return (
         
        <div style={{border: "solid black 3px"}}>
-            <h2>Madrid</h2>
+            <h2> { weather.name } </h2>
             <p>Chance of rain: 0%</p>
 
             <div style={{border: "solid red 3px"}}>
