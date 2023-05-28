@@ -14,7 +14,7 @@ const CurrentTemp = ( { weather } : Props ) => {
 
     return (
         
-       <div style={{border: "solid black 3px"}}>
+       <div style={{border: "solid black 3px", margin : "80px"}}>
             <h2> { weather.name } </h2>
             <p>Chance of rain: 0%</p>
 

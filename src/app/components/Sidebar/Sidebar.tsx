@@ -13,7 +13,10 @@ import {
     ListItemIcon,
     ListItemText
 } from '@mui/material';
+import { SetStateAction } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
+import { WiDayFog } from 'weather-icons-react';
+import { BiAbacus, BiMap, BiMapAlt } from "react-icons/bi";
 
 interface Props {
     setCity : Dispatch<SetStateAction<string>>
@@ -21,7 +24,12 @@ interface Props {
 
 const Sidebar = ({ setCity } : Props) => {
     const drawerWidth = 240;
-
+    const options = [
+        { name : 'Weather', icon : <WiDayFog /> },
+        { name : 'Cities', icon : <BiMap /> },
+        { name : 'Map', icon : <BiMapAlt /> },
+        { name : 'Settings', icon : <BiAbacus /> }
+    ];
     return (
         <>
         <AppBar
@@ -51,13 +59,15 @@ const Sidebar = ({ setCity } : Props) => {
           <Toolbar />
           <Divider />
           <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem key={text} disablePadding>
+            
+            {options.map((text, index) => (
+              <ListItem key={text.name} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
-                    {index % 2 === 0 ? <h1>InboxIcon</h1>: <h1>MailIcon</h1>}
+                    {text.icon}
+                    {/* {index % 2 === 0 ? <h1>InboxIcon</h1>: <h1>MailIcon</h1>} */}
                   </ListItemIcon>
-                  <ListItemText primary={text} />
+                  <ListItemText primary={text.name} />
                 </ListItemButton>
               </ListItem>
             ))}
