@@ -1,6 +1,12 @@
 "use client";
 import { useState, Dispatch, SetStateAction } from 'react';
-
+import Paper from '@mui/material/Paper';
+import InputBase from '@mui/material/InputBase';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+import DirectionsIcon from '@mui/icons-material/Directions';
 interface Props {
     setCity : Dispatch<SetStateAction<string>>
 }
@@ -10,7 +16,6 @@ const SearchBar = ({ setCity } : Props)  => {
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>): void => {
         e.preventDefault();
         setSearchTerm(e.target.value);
-        
     } 
 
     const Search = () => {
@@ -20,23 +25,21 @@ const SearchBar = ({ setCity } : Props)  => {
     }
 
     return (
-        <>
-        <input 
-            type="text" 
-            placeholder="Search for cities" 
-            onChange={handleSearch} 
-            value={searchTerm} 
-            style={{
-                width: "50%", 
-                height: "30px", 
-                borderRadius: "15px", 
-                padding:"5px",
-                backgroundColor: "#d3d5d7",
-                color: "black"
-            }}
+        <Paper
+        component="form"
+        sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 600 }}
+      >
+        <InputBase
+          sx={{ ml: 1, flex: 1 }}
+          placeholder="Search"
+          inputProps={{ 'aria-label': 'search' }}
+          onChange={handleSearch} 
+          value={searchTerm}
         />
-        <button type="button" value="search" onClick={Search}>Search</button>
-        </>
+        <IconButton type="button" sx={{ p: '10px' }} aria-label="search" onClick={Search}>
+          <SearchIcon />
+        </IconButton>
+      </Paper>
     );
 }
 

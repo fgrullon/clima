@@ -38,10 +38,6 @@ const Sidebar = ({ setCity } : Props) => {
         >
           <Toolbar>
             <SearchBar setCity={setCity} />
-
-            {/* <Typography variant="h6" noWrap component="div">
-              Permanent drawer
-            </Typography> */}
           </Toolbar>
         </AppBar>
         <Drawer
