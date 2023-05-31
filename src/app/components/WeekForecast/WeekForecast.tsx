@@ -18,7 +18,7 @@ const WeekForecast = () => {
     return (
         <Grid sx={{ flexGrow: 1 }} container spacing={2}>
             <Grid item xs={12}>
-              <Grid container justifyContent="center" spacing={5} marginTop={25}>
+              <Grid container justifyContent="center" spacing={5} marginTop={5}>
                 <Grid item>
                     <Item key={'today'}>Today Sunny 36/22</Item>
                     <Item key={'tue'}>Tue Sunny 37/21</Item>

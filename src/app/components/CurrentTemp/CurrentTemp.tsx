@@ -29,11 +29,13 @@ const CurrentTemp = ( { weather } : Props ) => {
         return null;
     }
 
+    console.log(weather)
+
     return (
         
     <Grid sx={{ flexGrow: 1 }} container spacing={2}>
         <Grid item xs={12}>
-          <Grid container justifyContent="center" spacing={5} marginTop={25}>
+          <Grid container justifyContent="left" spacing={5} marginTop={5}>
             <Grid key={weather.name} item>
                 <Item>{weather.name}</Item>
                 <Item>Chance of rain: 0%</Item>
@@ -42,6 +44,13 @@ const CurrentTemp = ( { weather } : Props ) => {
             <Item>
                 <WiDaySunny size={200} color='#ffbb11b8' />
             </Item>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <Grid container justifyContent="left" spacing={5}>
+            <Grid item>
+                <Item>{weather.main.temp - 273.15}<WiCelsius size={100} color="black" /></Item>
             </Grid>
           </Grid>
         </Grid>
