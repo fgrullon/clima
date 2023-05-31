@@ -1,12 +1,29 @@
 "use client";
 import { WiCelsius, WiDaySunny } from 'weather-icons-react';
 import { Weather } from '../../types';
+import Grid from '@mui/material/Grid';
+import FormLabel from '@mui/material/FormLabel';
+import FormControl from '@mui/material/FormControl';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import RadioGroup from '@mui/material/RadioGroup';
+import Radio from '@mui/material/Radio';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
 
 interface Props {
     weather : Weather;
 }
 
+const Item = styled(Paper)(({ theme }) => ({
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+}));
+
 const CurrentTemp = ( { weather } : Props ) => {
+
+    const spacing = 2;
 
     if(!weather){
         return null;
@@ -14,19 +31,23 @@ const CurrentTemp = ( { weather } : Props ) => {
 
     return (
         
-       <div style={{border: "solid black 3px", margin : "80px"}}>
-            <h2> { weather.name } </h2>
-            <p>Chance of rain: 0%</p>
+    <Grid sx={{ flexGrow: 1 }} container spacing={2}>
+        <Grid item xs={12}>
+          <Grid container justifyContent="center" spacing={5} marginTop={25}>
+            <Grid key={weather.name} item>
+                <Item>{weather.name}</Item>
+                <Item>Chance of rain: 0%</Item>
+            </Grid>
+            <Grid key={weather.id} item>
+            <Item>
+                <WiDaySunny size={200} color='#ffbb11b8' />
+            </Item>
+            </Grid>
+          </Grid>
+        </Grid>
 
-            <div style={{border: "solid red 3px"}}>
-                <h1>31 <WiCelsius size={50} color='#000' style={{ margin : "-15px"}} /></h1>
-            </div>
+    </Grid>
 
-            <div style={{border: "solid blue 3px"}}>
-                <h1><WiDaySunny size={200} color='#ffbb11b8' style={{float: 'right'}} /></h1>
-            </div>
-
-       </div>
     );
 }
 
