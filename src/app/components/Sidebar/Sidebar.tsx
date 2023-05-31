@@ -1,10 +1,7 @@
 
 import { 
-    Box, 
     AppBar, 
     Toolbar ,
-    CssBaseline,
-    Typography,
     Drawer,
     Divider,
     List,
@@ -61,7 +58,6 @@ const Sidebar = ({ setCity } : Props) => {
                 <ListItemButton>
                   <ListItemIcon>
                     {text.icon}
-                    {/* {index % 2 === 0 ? <h1>InboxIcon</h1>: <h1>MailIcon</h1>} */}
                   </ListItemIcon>
                   <ListItemText primary={text.name} />
                 </ListItemButton>
